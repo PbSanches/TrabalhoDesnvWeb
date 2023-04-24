@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de Média</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+		input[type="text"] {
+			width: 100%;
+			padding: 5px;
+			margin-top: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+		input[type="button"] {
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 10px 0;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+		.aprovado {
+			color: green;
+			font-weight: bold;
+		}
+		.reprovado {
+			color: red;
+			font-weight: bold;
+		}
+		.recuperacao {
+			color: blue;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculadora de Média</h1>
+	<label for="nome">Nome:</label>
+	<input type="text" id="nome">
+	<label for="nota1">Nota 1:</label>
+	<input type="text" id="nota1">
+	<label for="nota2">Nota 2:</label>
+	<input type="text" id="nota2">
+	<label for="nota3">Nota 3:</label>
+	<input type="text" id="nota3">
+	<label for="nota4">Nota 4:</label>
+	<input type="text" id="nota4">
+	<input type="button" value="Calcular Média" onclick="calcularMedia()">
+	<div id="resultado"></div>
+
+	<script>
+		function calcularMedia() {
+			var nome = document.getElementById("nome").value;
+			var nota1 = parseFloat(document.getElementById("nota1").value);
+			var nota2 = parseFloat(document.getElementById("nota2").value);
+			var nota3 = parseFloat(document.getElementById("nota3").value);
+			var nota4 = parseFloat(document.getElementById("nota4").value);
+
+			var media = (nota1 + nota2 + nota3 + nota4) / 4;
+
+			var resultado = document.getElementById("resultado");
+
+			if (media >= 60) {
+				resultado.innerHTML = nome + ", sua média é " + media.toFixed(1) + ". Você foi <span class='aprovado'>APROVADO</span>!";
+			} else if (media >= 21) {
+				resultado.innerHTML = nome + ", sua média é " + media.toFixed(1) + ". Você está em <span class='recuperacao'>RECUPERAÇÃO</span>.";
+			} else {
+				resultado.innerHTML = nome + ", sua média é " + media.toFixed(1) + ". Você foi <span class='reprovado'>REPROVADO</span>.";
+			}
+		}
+	</script>
+</body>
+</html>
